@@ -69,7 +69,7 @@ data "azurerm_management_group" "level" {
     for key, value in try(var.role_mapping.built_in_role_mapping.management_group, {}) : key => value
   }
 
-  name = lower(each.key) == "root" ? data.azurerm_client_config.current.tenant_id : each.key
+  name = lower(each.key) == "root" ? "Tenant Root Group" : each.key
 }
 
 locals {
