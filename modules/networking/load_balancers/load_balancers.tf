@@ -49,7 +49,7 @@ resource "azurerm_lb_backend_address_pool_address" "backend_address_pool_address
 resource "azurerm_lb_probe" "lb_probe" {
   for_each = try(var.settings.probes, {})
 
-  resource_group_name = var.resource_group_name
+  # resource_group_name = var.resource_group_name
   loadbalancer_id     = azurerm_lb.lb.id
   name                = each.value.probe_name
   port                = each.value.port
