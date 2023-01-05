@@ -96,7 +96,7 @@ resource "azurerm_lb_rule" "lb_rule" {
 resource "azurerm_lb_outbound_rule" "outbound_rule" {
   for_each = try(var.settings.outbound_rules, {})
 
-  resource_group_name      = var.resource_group_name
+  # resource_group_name      = var.resource_group_name
   loadbalancer_id          = azurerm_lb.lb.id
   name                     = each.value.name
   protocol                 = each.value.protocol
@@ -123,7 +123,7 @@ resource "azurerm_lb_outbound_rule" "outbound_rule" {
 resource "azurerm_lb_nat_pool" "nat_pool" {
   for_each = try(var.settings.nat_pools, {})
 
-  resource_group_name            = var.resource_group_name
+  # resource_group_name            = var.resource_group_name
   loadbalancer_id                = azurerm_lb.lb.id
   name                           = each.value.name
   protocol                       = each.value.protocol
@@ -136,7 +136,7 @@ resource "azurerm_lb_nat_pool" "nat_pool" {
 resource "azurerm_lb_nat_rule" "nat_rule" {
   for_each = try(var.settings.nat_rules, {})
 
-  resource_group_name            = var.resource_group_name
+  # resource_group_name            = var.resource_group_name
   loadbalancer_id                = azurerm_lb.lb.id
   name                           = each.value.name
   protocol                       = each.value.protocol

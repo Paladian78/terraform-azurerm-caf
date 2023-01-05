@@ -22,7 +22,9 @@ resource "azurerm_cognitive_account" "service" {
     content {
       default_action             = var.settings.network_acls.default_action
       ip_rules                   = try(var.settings.network_acls.ip_rules, null)
-      virtual_network_rules      = try(var.settings.network_acls.virtual_network_subnet_ids, null)
+      virtual_network_rules {
+        id = try(var.settings.network_acls.virtual_network_subnet_ids, null)
+      }
     }
   }
 
