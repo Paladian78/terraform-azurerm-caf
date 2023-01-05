@@ -67,7 +67,7 @@ resource "azurerm_lb_probe" "lb_probe" {
 resource "azurerm_lb_rule" "lb_rule" {
   for_each = try(var.settings.lb_rules, {})
 
-  resource_group_name            = var.resource_group_name
+  # resource_group_name            = var.resource_group_name
   loadbalancer_id                = azurerm_lb.lb.id
   name                           = each.value.lb_rule_name
   protocol                       = each.value.protocol

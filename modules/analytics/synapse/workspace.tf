@@ -32,6 +32,9 @@ resource "azurerm_synapse_workspace" "ws" {
       tenant_id = var.settings.aad_admin.tenant_id
     }
   }
+  identity {
+    type = "SystemAssigned"
+  }
 
   dynamic "azure_devops_repo" {
     for_each = try(var.settings.azure_devops_repo, {}) == {} ? [] : [1]
